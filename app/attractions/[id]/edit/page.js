@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import { useParams, useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function EditAttractionPage() {
   const { id } = useParams();
@@ -64,13 +65,19 @@ export default function EditAttractionPage() {
       <form onSubmit={onSubmit} style={{ display: "grid", gap: 12 }}>
         <input name="name" placeholder="Name" value={form.name} onChange={onChange} required />
         <input name="coverimage" placeholder="Cover Image URL" value={form.coverimage} onChange={onChange} required />
-        <textarea name="detail" placeholder="Detail" rows={4} value={form.detail} onChange={onChange} />
-        <input name="latitude" placeholder="Latitude" value={form.latitude} onChange={onChange} />
-        <input name="longitude" placeholder="Longitude" value={form.longitude} onChange={onChange} />
-        <button disabled={saving}>{saving ? "Saving..." : "Save changes"}</button>
-        {error && <div style={{ color: "crimson" }}>{error}</div>}
-      </form>
-      <p><a href={`/attractions/${id}`}>Cancel</a></p>
-    </div>
-  );
+        <textarea name="detail" placeholder="Detail" rows={4} value={form.detail} 
+onChange={onChange} />
+<input name="latitude" placeholder="Latitude" value={form.latitude} onChange={onChange} />
+<input name="longitude" placeholder="Longitude" value={form.longitude} onChange={onChange} />
+<button disabled={saving}>{saving ? "Saving..." : "Save changes"}</button>
+{error && <div style={{ color: "crimson" }}>{error}</div>}
+</form>
+
+<p>
+<Link href={`/attractions/${id}`}>Cancel</Link>
+</p>
+</div>
+);
 }
+
+
